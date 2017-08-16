@@ -5,16 +5,15 @@
 class Gmtsar < Formula
   desc "An open source (GNU General Public License) InSAR processing system designed for users familiar with Generic Mapping Tools (GMT). The code is written in C and will compile on any computer where GMT and NETCDF are installed."
   homepage "http://gmt.soest.hawaii.edu/projects/gmt5sar"
-  url "https://elenacreinisch.com/gmtsar/GMTSAR-5.3.tar.gz"
-  sha256 "321595362d195abaec4a01bebe5e914ef6a0fdc9c7564b8125d3e36151b034c5"
-  # sha256 "ed7c2b8a923787adf47908b888c8fa2e7f81cc496cc56dfca2f88da67aac3de2"
+  url "https://elenacreinisch.com/gmtsar/GMTSAR-5.4.tar.gz"
+  sha256 "ed7c2b8a923787adf47908b888c8fa2e7f81cc496cc56dfca2f88da67aac3de2"
 
    depends_on "cmake" => :build
    depends_on "autoconf" => :build
    depends_on "gmt"
 
   def install
-    # ENV.deparallelize  # if your formula fails when building in parallel
+    ENV.deparallelize  # if your formula fails when building in parallel
 
     # Remove unrecognized options if warned by configure
 #    system "./configure", "--disable-debug",
@@ -27,7 +26,8 @@ class Gmtsar < Formula
 #     system "mkdir", "$(brew --prefix)/orbits"
 #     system "tar", "xf", "-C", "$(brew --prefix)/orbits"
      system "autoconf"
-     system "./configure", "--with-orbits-dir=/usr/local/orbits"
+     system "./configure", "--with-orbits-dir=/usr/local/orbits",
+                           "--prefix=#{prefix}"
      system "make"
      system "make", "install"
   end
