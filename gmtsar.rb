@@ -12,54 +12,15 @@ class Gmtsar < Formula
    depends_on "autoconf" => :build
    depends_on "gmt"
 
-  if(File.directory?('/usr/local/orbits')) 
-    `echo "orbit directory exists, not re-downloading"`
-  else
-    system('rm ORBITS.tar.*')
-    system 'wget', 'http://topex.ucsd.edu/gmtsar/tar/ORBITS.tar'
-    system('mkdir -p /usr/local/orbits')
-    system('tar xf ORBITS.tar -C /usr/local/orbits')
-    system('rm ORBITS.tar.*')
-  end
-
   def install
     ENV.deparallelize  # if your formula fails when building in parallel
 
-    # Remove unrecognized options if warned by configure
-#    system "./configure", "--disable-debug",
-#                          "--disable-dependency-tracking",
-#                          "--disable-silent-rules",
-#                          "--prefix=#{prefix}"
-#    # system "cmake", ".", *std_cmake_args
-#    system "make", "install" # if this fails, try separate make/make install steps
      system "autoconf"
      system "./configure", "--with-orbits-dir=/usr/local/orbits",
                            "--prefix=#{prefix}"
      system "make"
      system "make", "install"
   end
-  
-  if(File.file?('~/.tcshrc')) 
-      system('echo "setenv GMT5SAR $(brew --prefix)/GMT5SAR" >> ~.tcshrc')
-      system('echo "setenv PATH $GMTSAR/bin:$PATH" >> ~.tcshrc')
-  end
-
-  if(File.file?('~/.bashrc')) 
-      system('echo "export GMT5SAR=$(brew --prefix)/GMT5SAR" >> ~.tcshrc')
-      system('echo "export PATH=$GMTSAR/bin:$PATH" >> ~.tcshrc')
-  end
-
-  if(File.file?('~/.bash_profile')) 
-      system('echo "export GMT5SAR=$(brew --prefix)/GMT5SAR" >> ~.tcshrc')
-      system('echo "export PATH=$GMTSAR/bin:$PATH" >> ~.tcshrc')
-  end
-
-  if(File.file?('~/.profile')) 
-      system('echo "export GMT5SAR=$(brew --prefix)/GMT5SAR" >> ~.tcshrc')
-      system('echo "export PATH=$GMTSAR/bin:$PATH" >> ~.tcshrc')
-  end
-
-
 
   test do
     # `test do` will create, run in and delete a temporary directory.
