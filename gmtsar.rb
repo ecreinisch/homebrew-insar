@@ -8,9 +8,16 @@ class Gmtsar < Formula
   url "https://elenacreinisch.com/gmtsar/GMTSAR-5.4.tar.gz"
   sha256 "ed7c2b8a923787adf47908b888c8fa2e7f81cc496cc56dfca2f88da67aac3de2"
 
-   depends_on "cmake" => :build
-   depends_on "autoconf" => :build
-   depends_on "gmt"
+  option "without-gmt", "Does not install GMT5; use this option if you already have GMT5 installed"
+  
+  if build.without? "gmt"
+    depends_on "cmake" => :build
+    depends_on "autoconf" => :build
+  else
+    depends_on "cmake" => :build
+    depends_on "autoconf" => :build
+    depends_on "gmt" => "with-v5"
+  end
 
   def install
     ENV.deparallelize  # if your formula fails when building in parallel
@@ -21,6 +28,12 @@ class Gmtsar < Formula
      system "make"
      system "make", "install"
   end
+
+  def caveats; <<-EOS.undent
+      GMTSARv5.4 currently uses GMTv5.  Installing without options will automatically install GMT5 using a homebrew formula.  If you already have GMT5 installed,  use the without-gmt option at installation
+      EOS
+  end
+
 
   test do
     # `test do` will create, run in and delete a temporary directory.
