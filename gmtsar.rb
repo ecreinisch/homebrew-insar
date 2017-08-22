@@ -13,6 +13,11 @@ class Gmtsar < Formula
   if build.without? "gmt"
     depends_on "cmake" => :build
     depends_on "autoconf" => :build
+    depends_on "gdal"
+    depends_on "netcdf"
+    depends_on "fftw"
+    depends_on "pcre"
+
   else
     depends_on "cmake" => :build
     depends_on "autoconf" => :build
@@ -31,7 +36,7 @@ class Gmtsar < Formula
 
   def caveats; <<-EOS.undent
       GMTSARv5.4 currently uses GMT5.  Installing without options will automatically install GMT5 with all libraries using a Homebrew formula.  
-If you already have GMT5 installed with all the (previously optional) libraries, use the without-gmt option at installation. If you choose to use the without-gmt option, please make sure that GMT5 will be accessible to GMTSAR at runtime (i.e., included in your path).  If you are unsure about any of this, please use the default installation: brew install gmtsar.
+If you already have GMT5 installed with all the (previously optional) libraries, use the without-gmt option at installation. If you choose to use the without-gmt option, please make sure that GMT5 will be accessible to GMTSAR at runtime (i.e., included in your path). This is strongly discouraged because it is unlikely that you will have the dependencies. 
       EOS
   end
 
