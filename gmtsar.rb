@@ -6,7 +6,7 @@ class Gmtsar < Formula
   desc "An open source (GNU General Public License) InSAR processing system designed for users familiar with Generic Mapping Tools (GMT). The code is written in C and will compile on any computer where GMT and NETCDF are installed."
   homepage "http://gmt.soest.hawaii.edu/projects/gmt5sar"
   url "https://elenacreinisch.com/gmtsar/GMTSAR-5.4.tar.gz"
-  sha256 "ed7c2b8a923787adf47908b888c8fa2e7f81cc496cc56dfca2f88da67aac3de2"
+  sha256 "6143b09868e928fe88b0c071a8643c7fa5d37859e73ab665b355359f868b4746"
 
   option "without-gmt", "Does not install GMT5; use this option only if you already installed GMT5 with all of the (previously optional) libraries (e.g., gdal, pcre, etc).  This is not recommended."
   
