@@ -7,6 +7,7 @@ class Gmtsar < Formula
   homepage "http://gmt.soest.hawaii.edu/projects/gmt5sar"
   url "https://drive.google.com/uc?export=download&id=18ZqdLnx-DuRjuWw4XL_IdbaqRa6YBGUH"
   sha256 "2ed803ebe7ff4b3c9d31d8c3a91dc5bdab2831cc19dac4608629d8b8a67e787c"
+  version "5.5"
 
   option "without-gmt", "Does not install GMT5; use this option only if you already installed GMT5 with all of the (previously optional) libraries (e.g., gdal, pcre, etc).  This is not recommended."
   
