@@ -16,17 +16,18 @@ class Gmt < Formula
     sha256 "30fe868c91df30c51a637d54cb9ac52a64fe57e15daa9e08a73a4d1f0847e69f"
   end
 
-  bottle do
-    sha256 "6d25598cde38cd50a97d1297c270397d5fdb2c7a92ab6317f4441e331bfefaae" => :sierra
-    sha256 "b6ae9d8fae42bd8a3794cc30099a6e4cd724d70dbb23ea8ba7110573268a37e1" => :el_capitan
-    sha256 "51ff3a7285a3af1126ef9ce4fcaf3e27dbbba1fddd9b1244cb6a31f5b8aad8cf" => :yosemite
-  end
+#  bottle do
+#    sha256 "6d25598cde38cd50a97d1297c270397d5fdb2c7a92ab6317f4441e331bfefaae" => :sierra
+#    sha256 "b6ae9d8fae42bd8a3794cc30099a6e4cd724d70dbb23ea8ba7110573268a37e1" => :el_capitan
+#    sha256 "51ff3a7285a3af1126ef9ce4fcaf3e27dbbba1fddd9b1244cb6a31f5b8aad8cf" => :yosemite
+#  end
 
   depends_on "cmake" => :build
   depends_on "gdal"
   depends_on "netcdf"
   depends_on "fftw"
   depends_on "pcre"
+  depends_on "hdf5"
 
 #  conflicts_with "gmt4", :because => "both versions install the same binaries"
 

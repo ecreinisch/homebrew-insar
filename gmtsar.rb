@@ -5,8 +5,8 @@
 class Gmtsar < Formula
   desc "An open source (GNU General Public License) InSAR processing system designed for users familiar with Generic Mapping Tools (GMT). The code is written in C and will compile on any computer where GMT and NETCDF are installed."
   homepage "http://gmt.soest.hawaii.edu/projects/gmt5sar"
-  url "https://elenacreinisch.com/gmtsar/GMTSAR-5.4.tar.gz"
-  sha256 "ed7c2b8a923787adf47908b888c8fa2e7f81cc496cc56dfca2f88da67aac3de2"
+  url "https://elenacreinisch.com/gmtsar/GMTSAR-5.5.1.tar.gz"
+  sha256 "7338867e6af44e8cf112c955ec99e72e7fd02556b2ac2d9fa85630ed0ec63458"
 
   option "without-gmt", "Does not install GMT5; use this option only if you already installed GMT5 with all of the (previously optional) libraries (e.g., gdal, pcre, etc).  This is not recommended."
   
@@ -29,8 +29,8 @@ class Gmtsar < Formula
      system "make", "install"
   end
 
-  def caveats; <<-EOS.undent
-      GMTSARv5.4 currently uses GMT5.  Installing without options will automatically install GMT5 with all libraries using a Homebrew formula.  
+  def caveats; <<-EOS
+      GMTSARv5.5 currently uses GMT5.  Installing without options will automatically install GMT5 with all libraries using a Homebrew formula.  
 If you already have GMT5 installed with all the (previously optional) libraries, use the without-gmt option at installation. If you choose to use the without-gmt option, please make sure that GMT5 will be accessible to GMTSAR at runtime (i.e., included in your path). This is strongly discouraged because it is unlikely that you will have all of the dependencies in the correct locations for Homebrew. 
       EOS
   end
